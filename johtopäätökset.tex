@@ -1,0 +1,32 @@
+\chapter{Johtopäätökset} \label{Johtopäätökset}
+
+% voisi aloittaa luvun vielä kertaamalla tilanhallinnan käsitteen
+% ja sen merkityksen
+% -SR
+
+Tässä tutkielmassa käsiteltiin tilaa sekä tilanhallintaa. Tila tarkoittaa sovellukseen tallennettua tietoa, joka voi muuttua esimerkiksi reagoimalla käyttäjän syötteeseen. Tilanhallinnalla siis tarkoitetaan tilan käyttöön, esittämiseen sekä päivittämiseen tarvittavia toimenpiteitä ja ratkaisuja. Tutkielmassa käsiteltiin tilanhallintaan liittyviä ongelmia sekä tilanhallinnan menetelmiä, joita sovellettiin tyypillisiin tilanhallinnan ongelmiin esimerkkien avulla.
+
+%Tutkimuskysymys 1: Minkälaisia ongelmia tilanhallintaan liittyy?
+Tutkielmassa käsiteltyjen asioiden nojalla voidaan todeta tilanhallinnan olevan hyvin keskeinen käsite React-sovelluksen kehityksessä. Tilanhallintaan liittyviä ongelmia on erityyppisiä ja ne ilmenevät sovelluksissa eri tavoin, riippuen esimerkiksi sovelluksen toiminnallisuusvaatimuksien monimutkaisuudesta sekä laajuudesta. Ongelmat juontavat juurensa tyypillisesti joko tilan jakamisesta komponenttien välillä tai monimutkaistuneista tietotyypeistä. Mikäli tilanhallintaa ei huomioida jo sovelluksen suunnitteluvaiheessa, sovelluksessa ilmenee tutkielmassa käsiteltyjä ongelmia hyvin suurella todennäköisyydellä. 
+
+%Tutkimuskysymys 2: Minkälaisia käytännölliseksi todettuja keinoja ja työkaluja tilanhallinnan helpottamiseksi on olemassa?
+Tutkielman pohjalta voidaan myös todeta, että on olemassa useita varteenotettavia tilanhallinnan menetelmiä, joista jokaisella on omat käyttötapauksensa. Tilanhallintaan ei ole siis olemassa yhtä ainutta oikeaa ratkaisua. Luvussa \ref{Tilan nostaminen} käsitelty tilan nostaminen komponenttipuussa tasoa korkeammalle on yksinkertainen ja nopea ratkaisu tilan jakamiseen kahdelle samalla tasolla sijaitsevalle komponentille. Luvussa \ref{useContext} käsitellyn kontekstin käyttöönotto voi olla käytännöllinen ratkaisu tilanhallintaan, jos tilaa tarvitaan huomattavan monessa eri komponentissa. Toisaalta konteksti voi olla pienemmissä sovelluksissa turhan järeä ratkaisu, jolloin luvussa \ref{Kokoonpano ja periminen} käsitelty kokoonpano voi olla yksinkertaisempi vaihtoehto. Mikäli sovelluksen arvioidaan olevan toiminnallisuudeltaan monimutkainen ja kehityksessä on mukana useita kehittäjiä, on esimerkiksi tutkielman luvussa \ref{useReducer} käsiteltyjen reducerien käyttöönotto tällaisessa tapauksessa suotavaa. Myös luvussa \ref{Redux-kirjasto} käsitelty Redux on varteenotettava vaihtoehto laajoissa ja monimutkaisissa sovellushankkeissa, joissa tavoitellaan tarkkaa hienosäätöä ja vianmääritysprosessia sovelluksen tueksi. Toisaalta Redux voi olla joissain tilanteissa ylenpalttisen tehokas ratkaisu, jolle ei ole juurikaan tarvetta.
+
+Tilanhallinta käsitteenä ei ole pelkästään Reactille ominainen. Myös vastaavanlaisissa kilpailevissa JavaScript-kirjastoissa ja -kehyksissä on omat tilanhallinnan haasteensa ja ratkaisunsa. Googlen kehittämään ja ylläpitämään Angulariin on saatavilla tilanhallintaan tarkoitettu NgRx-kirjasto, joka perustuu hyvin pitkälti Flux-arkkitehtuuriin ja Reduxiin \cite{ngrx}. Evan Youn kehittämä Vue.js lähestyy tilanhallintaa Pinia-implementaatiolla, jossa tila säilötään myös Reduxin tapaan keskitetyssä säiliössä (engl. store) \cite{pinia}.
+% storen voisi tässä suomentaa ja laittaa englanniksi sulkuihin
+% -SR
+
+Aiheen tutkimista voisi jatkaa tulevaisuudessa tilanhallinnan käsitteen pohjalta web-kehityksen näkökulmasta. Koska tilanhallinta on keskeinen käsite web-kehityksessä, olisi sitä mielekästä tarkastella puolueettomasti ilman tiettyä taustalla olevaa JavaScript-kirjastoa tai -kehystä. Missä tilan tulee sijaita web-sovelluksessa? Miten sitä voidaan muuttaa? Miten muuttuvaa tilaa voitaisiin käsitellä asynkronisesti?
+
+% tässä voisi (osin ehkä yhteenvedon omaisesti mutta myös johtopäätöksinä
+% sanoa lyhyesti jotakin kaikista käsitellyistä tilanhallintamenetelmistä
+%
+% Kohta "Menetelmiä ja lähestymistapoja on erilaisia" en ehkä jo edellä
+% käsitellyn perusteella aika itsestäänselvä, sen poistamista voi harkita
+%
+%
+% voisi ehkä päättää tämän luvun kappaleella tilanhallinnan yleisemmästä roolista ohjelmistokehityksessä
+% voiko ehkä myös sanoa hyvin lyhyesti jotakin reactin menetelmistä verrattuna kilpaileviin kirjastoihin
+% mitkä voisivat esimerkiksi olla tulevaisuuden suuntauksia ja tutkimuskymyksiä tilanhallintaan liittyen, osoitiiko tutkielma jonkinlaisia aukkoja nykyisessä tutkimuksessa?
+% näiden lisäysten avulla tutkielman aihe asettuu myös hieman laajempaan kontekstiin ja sen merkitys tulee selvästi esiin (muutenkin kuin teknisten yksityiskohtien kannalta)
+% -SR

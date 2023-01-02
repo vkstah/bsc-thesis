@@ -1,0 +1,84 @@
+\documentclass[a4paper,12pt,language=finnish,version=final,hidechapters=true,includereferences=false,realtimesnewroman=false,sharelatex=true,emptyfirstpages=true,minted=true]{utuftthesis}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+%%
+%% Minted
+%%
+
+\setminted{
+breaklines,
+baselinestretch=1.1,
+frame=lines,
+linenos
+}
+\usemintedstyle{monokai}
+\usepackage{xcolor}
+
+\addbibresource{Bibliografia.bib}
+\begin{document}
+
+\pubyear{2022}
+
+\pubmonth{6}
+
+\publab{Tietotekniikka}
+
+\publaben{Laboratory Name}
+
+\pubtype{tkk}
+\title{Tilanhallinta React.js-pohjaisessa web-sovelluksessa}
+\author{Vili Ståhlberg}
+
+\maketitle
+\input{abstract.tex}
+
+% empty pagestyle for table of contents etc.
+% otherwise you'll get simple page style with roman page numbers
+\pagestyle{empty}
+
+% mandatory
+\tableofcontents
+
+% if you want a list of figures
+%\listoffigures
+
+% if you want a list of tables
+%\listoftables
+
+% 'list of acronyms'
+%   - you may not need this at all
+%   - create a chapter called List Of Acronyms (or whatever), which
+%     should contain all your acronym definitions, e.g. 
+%     \chapter{List Of Acronyms} 
+%   - the secnumdepth trickery is needed because acronyms are as a
+%     standard chapter and we are faking '\listofacronyms'
+%
+%\setcounter{secnumdepth}{-1}
+%\input{your acronym chapter's file name}
+%\setcounter{secnumdepth}{2}% setup page numbering, page counter, etc.%
+
+\input{johdanto}
+\input{reactjs}
+\input{tilanhallinta}
+\input{ongelmat}
+\input{menetelmät}
+\input{johtopäätökset}
+
+\begin{comment}
+The thesis main content ends here.
+\end{comment}
+\printbibliography
+
+\begin{comment}
+Create your appendix chapters with command \textbackslash appchapter\{some
+name\} instead of \textbackslash chapter\{some name\} for the automagic
+page counting to work!
+\end{comment}
+
+
+\begin{comment}
+main document ends here
+\end{comment}
+
+\end{document}

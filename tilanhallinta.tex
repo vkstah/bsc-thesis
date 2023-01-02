@@ -1,0 +1,44 @@
+\chapter{Tilanhallinta} \label{tilanhallinta}
+
+Tila käsitteenä on yksi React-sovelluksen tärkeimpiä ominaisuuksia. Sovelluksen vuorovaikutteisuus ja intuitiivisuus parantavat käyttäjäkokemusta \cite{userexperience}. Jotta sovellus toimisi vuorovaikutteisesti käyttäjän kanssa, tulee sovelluksen reagoida ja muuttua erilaisten syötteiden mukaisesti. Syöte voi olla peräisin käyttäjältä, mutta se voi myös tulla esimerkiksi toisella palvelimella sijaitsevasta rajapinnasta. Luvussa \ref{Tila} esitetyn komponentin tilan käyttäminen on erinomainen tapa hallinnoida sovelluksen vuorovaikutteisuutta.
+
+Tilanhallinnalla (engl. state management) viitataan toisaalta yksinkertaisesti tilan muuttamiseen, mutta myös tilan hallittavuuteen. Sovelluksen kasvaessa ja monimutkaistuessa kehittäjän tekemät tilanhallinnan ratkaisut korostuvat, jolloin keskinkertaiset ratkaisut vaativat jatkokehitystä tai ääritapauksessa jopa kokonaan korvaamista uudenlaisilla ratkaisuilla. Tässä luvussa perehdytään tarkemmin tilanhallinnan peruskäsitteisiin yksinkertaisten esimerkkien johdatuksella.
+
+%%
+%% Paikallinen tila
+%%
+
+\section{Paikallinen tila}
+\label{Paikallinen tila}
+
+Yksittäisen komponentin sisällä hallittua tilaa kutsutaan paikalliseksi tilaksi (engl. local state). Komponenttia, jolle on asetettu yksi tai useampi tila, kutsutaan tilalliseksi komponentiksi (engl. stateful component). Tila asetetaan komponentissa, jolloin oletuksena vain kyseisellä komponentilla on kyky käyttää tilaa. Tilan asettaminen funktiokomponentille tehdään Reactiin sisällytetyn \texttt{useState}-hookin avulla.
+
+Uuden tilan asettaminen aloitetaan määrittelemällä uusi vakio ja kutsumalla \texttt{useState}-funktiota. \texttt{useState} palauttaa kaksi alkiota sisältävän taulukon (engl. array). Ensimmäinen alkio sisältää tilamuuttujan johon tila tallennetaan. Toinen alkio on funktio, jolla tilaa voidaan päivittää. \cite[64]{reactandnative}
+\inputminted[bgcolor=black,highlightlines={2},highlightcolor=darkgray]{jsx.py:JsxLexer -x}{listaukset/counter.js}
+Esimerkissä yksinkertaiseen laskurikomponenttiin muodostetaan destrukturointilauseke, jolla nimetään tilamuuttuja \texttt{count}, tilan päivittävä funktio \texttt{setCount} sekä asetetaan tilan lähtöarvo. Tilamuuttuja \texttt{count} sisältää tilalle asetetun arvon. Lähtöarvo annetaan \texttt{useState}-funktiolle parametrina, joka on tässä esimerkissä asetettu nollaksi.
+
+
+%%
+%% Tilan päivittäminen
+%%
+
+\section{Tilan päivittäminen}
+\label{Tilan päivittäminen}
+
+Tilan päivittäminen suoritetaan esimerkissä annetulla \texttt{setCount}-funktiolla. Funktion parametriksi annetaan haluttu päivitetty arvo.
+\inputminted[bgcolor=black,highlightlines={5,7},highlightcolor=darkgray]{jsx.py:JsxLexer -x}{listaukset/counter2.js}
+Esimerkissä jompaakumpaa nappia painamalla laukaistaan JavaScript ES6 -standardin mukainen nuolifunktio, joka asettaa tilalle uuden arvon vähentämällä tai lisäämällä edeltävään arvoon luvun yksi. Tilaa ei saa koskaan päivittää suoraan asettamalla sille uuden arvon. Päivittäminen tulee aina tehdä \texttt{useState}-hookille annetulla funktiolla. \cite{reactdocsstate}
+
+%%
+%% Tilan jakaminen muille komponenteille
+%%
+
+\section{Tilan jakaminen muille komponenteille}
+\label{Tilan jakaminen muille komponenteille}
+
+Jotta komponenttien jakaminen pienempiin itsenäisiin osiin olisi mahdollista, täytyy tiedon pystyä liikkumaan eri komponenttien välillä. Tilan jakaminen komponentilta toiselle tehdään luvussa \ref{Props} mainittujen propsien avulla:
+\inputminted[bgcolor=black,highlightlines={6},highlightcolor=darkgray]{jsx.py:JsxLexer -x}{listaukset/counter3.js}
+Esimerkissä laskurin toiminnallisuudesta vastaava komponentti \texttt{Counter} toteuttaa kaikki laskuriin liittyvän tilanhallinnan toimenpiteet. Se ei kuitenkaan ota kantaa suoraan miten laskurin lukuarvo tulisi esittää. Sen sijaan lukuarvo syötetään eteenpäin \texttt{Display}-komponentin käsiteltäväksi ja esitettäväksi rivillä 6:
+\inputminted[bgcolor=black]{jsx.py:JsxLexer -x}{listaukset/display.js}
+
+Reactin virallisesta dokumentaatiosta sekä aiemmin esitetyistä esimerkeistä ilmenee, että tieto liikkuu ylhäältä alaspäin komponenttien välillä. Tietovirta on siis yksisuuntaista \cite{reactdocsstate}. Tämän lisäksi propseina tietoa saanut komponentti ei välitä tiedon alkuperästä. Myöskään sillä ei ole merkitystä onko tieto jonkin toisen komponentin hallitsema tila vai yksinkertaisesti jokin käsin kirjoitettu mielivaltainen arvo. Komponentin näkökulmasta ainoastaan sillä on merkitystä, että tieto on saatavilla propsien muodossa.
